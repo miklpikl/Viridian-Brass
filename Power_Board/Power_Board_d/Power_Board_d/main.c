@@ -13,7 +13,11 @@
 
 int main(void) {
     //TODO:: init stuff
+	spi_master_init();
     while (1) {
 		//TODO:: code stuff
+		for (uint8_t i = 0; i <= 200; i++) {
+			spi_master_transmit(i);
+		}
     }
 }

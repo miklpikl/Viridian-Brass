@@ -1,7 +1,7 @@
 //system_config.h
 //Created by John Fritz 11/17/2015
 
-#warning Modify this section with proper values before continuing
+#warning Define system configuration in system_config.h
 #define MCU ATMEGA328	//redefine to any of the following 
 						//	ATMEGA328
 						//	ATTINY48 (not yet implemented) 

@@ -10,7 +10,7 @@ main.d main.o: .././main.c .././system_config.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\version.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\fuse.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\lock.h \
- .././i2c.c .././i2c.h .././spi.c
+ .././i2c.c .././i2c.h .././spi.c .././spi.h
 
 .././system_config.h:
 
@@ -41,3 +41,5 @@ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\
 .././i2c.h:
 
 .././spi.c:
+
+.././spi.h:
