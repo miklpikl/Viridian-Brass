@@ -51,7 +51,7 @@
 	void usb_cdc_stop(void);
 	bool my_callback_cdc_enable(void);
 	void my_callback_cdc_disable(void);
-	//void user_callback_vbus_action(bool);
+	//void user_callback_vbus_action(bool); //implemented in usb_cnfg.h
 	void usb_cdc_putc(char);
 	uint8_t usb_cdc_getc(void);
 	void usb_cdc_read(uint8_t*, uint32_t);
@@ -91,24 +91,24 @@ int main (void) {
 	}
 }
 
-void usb_cdc_start(void){
+void usb_cdc_start(void) {
 	udc_start();
 	UDC_VBUS_EVENT(true);
 }
-void usb_cdc_stop(void){
+void usb_cdc_stop(void) {
 	UDC_VBUS_EVENT(false);
 }
 
-bool my_callback_cdc_enable(void){
+bool my_callback_cdc_enable(void) {
 	my_flag_autorize_cdc_transfert = true;
 	return true;
 }
 
-void my_callback_cdc_disable(void){
+void my_callback_cdc_disable(void) {
 	my_flag_autorize_cdc_transfert = false;
 }
 
-void user_callback_vbus_action(bool b_high){
+void user_callback_vbus_action(bool b_high) {
 	if(b_high){
 		//attach usb device
 		udc_attach();
@@ -118,7 +118,7 @@ void user_callback_vbus_action(bool b_high){
 	}
 }
 
-void usb_cdc_putc(char c){
+void usb_cdc_putc(char c) {
 	if(my_flag_autorize_cdc_transfert) {
 		//wait til tx is ready
 		while(!udi_cdc_is_tx_ready);
@@ -126,23 +126,23 @@ void usb_cdc_putc(char c){
 	}
 }
 
-uint8_t usb_cdc_getc(void){
+uint8_t usb_cdc_getc(void) {
 	//halt until a character is received
 	return udi_cdc_getc();
 }
 
-void usb_cdc_read(uint8_t *buf, uint32_t buf_size){
+void usb_cdc_read(uint8_t *buf, uint32_t buf_size) {
 	udi_cdc_read_buf(buf, buf_size);
 }
 
-void usb_cdc_write(const uint8_t *buf, uint32_t buf_size){
+void usb_cdc_write(const uint8_t *buf, uint32_t buf_size) {
 	udi_cdc_write_buf(buf, buf_size);	
 }
 
-uint8_t reverse_case(uint8_t c){
-	if(c >= 'a' && c <= 'Z'){
+uint8_t reverse_case(uint8_t c) {
+	if(c >= 'a' && c <= 'Z') {
 		return c - ('a' - 'A');
-	} else if(c >= 'A' && c <= 'Z'){
+	} else if(c >= 'A' && c <= 'Z') {
 		return c + ('a' - 'A');
 	} else {
 		return c;
